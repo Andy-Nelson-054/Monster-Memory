@@ -1,9 +1,17 @@
 body {
     font-family: 'Raleway', sans-serif;
 }
+h1 {
+    color: #FD990D;
+}
 
-.outer-board {
-    border-radius: 10px;
+#outer-board {
+    background-color: #644B77;
+    /* background-color: #224870; */
+    height: 600px;
+}
+#inner-board {
+    background-color: #FACD63;
 }
 
 .top-block-100 {
@@ -14,6 +22,38 @@ body {
     margin-top: 20px;
 }
 
-.fill-third {
-    margin-top: 33%;
+/* 
+#outer-board {
+    height: 200px;
+} */
+
+.control-panel {
+    vertical-align: bottom;
+}
+
+.game-card {
+    height: 80px;
+    width: 80px;
+    background-color: #FD990D !important;
+}
+.control-panel {
+    background-color: #3DA641 !important;
+}
+.card-face {
+    margin-top: 20px;
+    height: 75px;
+    width: 45px;
+}
+.card-back {
+    margin-top: 20px;
+    height: 45px;
+    width: 45px;
+}
+.material-icons {
+    height: 75px;
+    width: 45px;
+}
+.image-small {
+    height: 45px;
+    width: 45px;
 }

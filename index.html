@@ -1,35 +1,191 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/materialize.min.css" />
     <link rel="stylesheet" href="css/custom.css" />
     <title>Memory</title>
-  </head>
+</head>
 
-  <script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/materialize.min.js"></script>
 
 <body class="blue-grey darken-3">
     <div class="container">
-        <h1 class="cyan-text text-lighten-1 center-align">Game Board</h1>
-        
+        <h1 class="center-align">
+            <img class="image-small" src="images/050-cobweb.png" /> 
+            Game Board 
+            <img class="image-small" src="images/050-cobweb.png" /></h1>
+
         <div class="divider"></div>
-        
+
         <div class="row top-block-20">
-                <div id="outer-board" class="col s12 card-panel red lighten-1">
-                    <div class="fill-third">&nbsp;
-                        <container id="inner-board-container">
+            <div class="col s8 offset-s2">
+                <div id="outer-board" class="card card">
+                    <div id="game-board" class="card-content">
+                        <!--Game Board here-->
+                        <div id="inner-board" class="card card large">
+
                             <div class="row">
-                                <div class="valign-wrapper">
-                                    <div id="inner-board" class="card col s10 offset-s1 cyan accent-4">
-                                        &nbsp;
+                                <div
+                                    class="col offset-s2 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
                                     </div>
                                 </div>
                             </div>
-                        </container>
+                            <div class="row">
+
+
+                                <div
+                                    class="col offset-s2 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+
+
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col offset-s2 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div
+                                    class="col offset-s2 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="col offset-s1 card game-card center-align activator waves-effect waves-block waves-green">
+                                    <img class="card-image card-face" src="images/001-werewolf.png">
+                                    <div class="card-reveal game-card" style="padding:0; overflow-y: visible;">
+                                        <span class="card-title">
+                                            <img class="card-image card-back" src="images/023-eyeball.png"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End Game Board-->
+
+                    </div>
+                    <div class="card-action control-panel">
                     </div>
                 </div>
+            </div>
         </div>
     </div>
-  </body>
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+    <!--2nd-->
+    <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a
+            href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+
+
+</body>
+
 </html>
