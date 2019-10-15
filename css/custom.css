@@ -1,0 +1,19 @@
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.outer-board {
+    border-radius: 10px;
+}
+
+.top-block-100 {
+    margin-top: 100px;
+}
+
+.top-block-20 {
+    margin-top: 20px;
+}
+
+.fill-third {
+    margin-top: 33%;
+}
