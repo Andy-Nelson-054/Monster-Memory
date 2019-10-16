@@ -41,12 +41,12 @@ h1 {
 .control-panel {
     background-color: #3DA641 !important;
 }
-.card-face {
+.card-back {
     margin-top: 20px;
     height: 75px;
     width: 45px;
 }
-.card-back {
+.card-face {
     margin-top: 20px;
     height: 45px;
     width: 45px;
