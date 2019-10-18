@@ -5,7 +5,7 @@ $(document).ready(function() {
         totalCards: 16,
         imageCount: 51,
         get cardBack() {
-           const cardBackSelect = Math.floor(Math.random() * this.imageCount);
+           const cardBackSelect = Math.floor(Math.random() * (this.imageCount + 1));
            return 'images/' + cardBackSelect + '.png';
         },
         get cardFaces() {
@@ -17,16 +17,19 @@ $(document).ready(function() {
                 
                 randCard = Math.floor(Math.random() * this.imageCount + 1);
                 cardFaceNum[i] = randCard;
+                cardFaceNum[i + this.gameCards] = randCard;
                 
                 for(var j = 0; j < i; j++) { //reassign repeated card faces
                     if(cardFaceNum[j] == randCard) {  //if newest card matches a previous one 
                         randCard = Math.floor(Math.random() * this.imageCount); //reset new card so it doesn't match 
                         cardFaceNum[i] = randCard;
+                        cardFaceNum[i + this.gameCards] = randCard; //duplicate value in secod half of array
                         j = -1; //reset counter to check new value again
                     } 
                 } 
             }
 
+            /* instead
             console.log(lowerHalfRand);
             //dublicate values once each for second half of array
             for(var i = this.gameCards; i < this.totalCards; i++){
@@ -39,7 +42,7 @@ $(document).ready(function() {
                         j = this.gameCards - 1; //reset counter to check new value again
                     } 
                 } 
-            }
+            }*/
 
             
 
@@ -48,11 +51,14 @@ $(document).ready(function() {
                 cardFaces[i] = 'images/' + cardFaceNum[i] + '.png';
             }*/
             console.log(cardFaceNum);
-            return cardFaces;
+            return cardFaceNum;
+        },
+        shuffle(){
+
         },
         buildDeck() {
             $('.card-back').attr('src', this.cardBack);
-            $('.card-face').attr('src', this.cardFaces[19]);
+            $('.card-face').attr('src', 'images/' + this.cardFaces[Math.floor(Math.random() * this.imageCount)] + '.png');
         }
             /*const deck = [];
             const imageSelect = Math.floor(Math.random() * this.imageCount);
@@ -68,10 +74,10 @@ $(document).ready(function() {
         }*/
         
     };
-    console.log(Deck.cardFaces);
-    /*
+    console.log('cardFaceNum: ' + Deck.cardFaces);
+    
     Deck.buildDeck();
-    console.log(Deck);*/
+    console.log(Deck);
    
     // i = 42;
     //$('.test').attr('src', 'images/' + i + '.png');
