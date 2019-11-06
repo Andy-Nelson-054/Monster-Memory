@@ -27,13 +27,23 @@ $(document).ready(function() {
                 }
             }
 
+            
             //assign upper half of cardFace
-            var upperHalf = new Array(this.gameCards);
-            var randLowerIndex = Math.floor(Math.random() * this.gameCards);
-            for(var i = 0; i < this.gameCards; i++){
+            var randIndices = new Array(this.gameCards);
+            var randIndex
 
+            for(var i = 0; i < this.gameCards; i++){
+                randIndex = Math.floor(Math.random() * this.gameCards);
+                randIndices[i] = randIndex;
+                for (var j = 0; j < i; j++){
+                    if (randIndices[j] === randIndex){
+                        i--;
+                    } 
+                }
             }
 
+            //transpose 
+            
 
             /*for(var i = 0; i < cardFace.length; i++) {
                 cardFaces[i] = 'images/' + cardFace[i] + '.png';
