@@ -9,17 +9,18 @@ $(document).ready(function() {
            return 'images/' + cardBackSelect + '.png';
         },
         get cardFaces() {
+            var cardBack = this.cardBack;
             var cardFace = new Array(this.deckSize);
-            var faceMax = 2;
-            var faceCount = 0;
             var randCard;
 
-            //generate random non-repeating values for first half of array
+            //generate random non-repeating values
             for(var i = 0; i < this.faceCount; i++){
                 randCard = Math.floor(Math.random() * this.imageCount + 1);
                 cardFace[i] = randCard;
                 for(var j = 0; j < i; j++) { //reassign repeated card faces
-                    if(cardFace[j] === randCard) { i-- };
+                    if(cardFace[j] === randCard || randCard === cardBack) { 
+                        i-- 
+                    };
                 }
                 //assign upper half of array
                 cardFace[i + this.faceCount] = cardFace[i];
@@ -28,6 +29,7 @@ $(document).ready(function() {
             
             //shuffle
             var randIndices = new Array(this.deckSize);
+            var completeDeck = new Array(this.deckSize);
             var maxRepeat = 2;
             var randIndex;
 
@@ -39,23 +41,24 @@ $(document).ready(function() {
                         maxRepeat === 2 ? i-- : maxRepeat++;
                     } 
                 }
-                cardFace[i] = randIndices[i];
+                completeDeck[i] = cardFace[randIndices[i]];
             }
 
-            //transpose 
             
+            console.log('cardFaces: ' + cardFace);
+            console.log('randIndices: ' + randIndices);
+            console.log('completeDeck: ' + completeDeck);
 
-            /*for(var i = 0; i < cardFace.length; i++) {
-                cardFaces[i] = 'images/' + cardFace[i] + '.png';
-            }*/
-            
-            console.log(cardFace);
-            console.log('randIndices ' + randIndices);
-            return cardFace;
+            return completeDeck;
         },
         buildDeck() {
             $('.card-back').attr('src', this.cardBack);
-            $('.card-face').attr('src', 'images/' + this.cardFaces[Math.floor(Math.random() * this.imageCount) + 1] + '.png');
+            
+            var cardSpace = $(".card-face");
+            var fullDeck = (this.cardFaces);
+            for(var i = 0; i < this.deckSize; i++){
+                $(cardSpace[i]).attr('src', 'images/' + fullDeck[i] + '.png');
+            }
 
         }
             /*const deck = [];
@@ -72,7 +75,6 @@ $(document).ready(function() {
         }*/
         
     };
-    console.log('cardFace: ' + Deck.cardFaces);
     
     Deck.buildDeck();
     console.log(Deck);
