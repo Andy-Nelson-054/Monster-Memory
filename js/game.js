@@ -1,45 +1,45 @@
 $(document).ready(function() {
    
     const Deck = {
-        gameCards: 16 / 2, //replace with call to method from Game
-        totalCards: 16,
+        faceCount: 16 / 2, //replace with call to method from Game
+        deckSize: 16,
         imageCount: 50,
         get cardBack() {
            const cardBackSelect = Math.floor(Math.random() * (this.imageCount) + 1);
            return 'images/' + cardBackSelect + '.png';
         },
         get cardFaces() {
-            var cardFace = new Array(this.totalCards);
+            var cardFace = new Array(this.deckSize);
             var faceMax = 2;
             var faceCount = 0;
             var randCard;
 
             //generate random non-repeating values for first half of array
-            for(var i = 0; i < this.gameCards; i++){
+            for(var i = 0; i < this.faceCount; i++){
                 randCard = Math.floor(Math.random() * this.imageCount + 1);
                 cardFace[i] = randCard;
                 for(var j = 0; j < i; j++) { //reassign repeated card faces
-                    if(cardFace[j] === randCard) {  //if newest card matches a previous one 
-                        faceCount++;
-                        if(faceCount === faceMax){//reset counter to check new value again
-                        }
-                    } 
+                    if(cardFace[j] === randCard) { i-- };
                 }
+                //assign upper half of array
+                cardFace[i + this.faceCount] = cardFace[i];
             }
 
             
-            //assign upper half of cardFace
-            var randIndices = new Array(this.gameCards);
-            var randIndex
+            //shuffle
+            var randIndices = new Array(this.deckSize);
+            var maxRepeat = 2;
+            var randIndex;
 
-            for(var i = 0; i < this.gameCards; i++){
-                randIndex = Math.floor(Math.random() * this.gameCards);
+            for(var i = 0; i < this.deckSize; i++){
+                randIndex = Math.floor(Math.random() * this.deckSize);
                 randIndices[i] = randIndex;
                 for (var j = 0; j < i; j++){
                     if (randIndices[j] === randIndex){
-                        i--;
+                        maxRepeat === 2 ? i-- : maxRepeat++;
                     } 
                 }
+                cardFace[i] = randIndices[i];
             }
 
             //transpose 
@@ -48,7 +48,9 @@ $(document).ready(function() {
             /*for(var i = 0; i < cardFace.length; i++) {
                 cardFaces[i] = 'images/' + cardFace[i] + '.png';
             }*/
+            
             console.log(cardFace);
+            console.log('randIndices ' + randIndices);
             return cardFace;
         },
         buildDeck() {
