@@ -11,6 +11,12 @@ h1 {
     background-color: #644B77;
     /* background-color: #224870; */
     height: 600px;
+    position: relative;
+}
+#game-menu{
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 20%;
 }
 #inner-board {
     background-color: #FACD63;
@@ -58,4 +64,18 @@ h1 {
 .image-small {
     height: 45px;
     width: 45px;
+}
+.slide {
+    overflow-y: hidden;
+    max-height: 600px;
+
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(1, 1, 1, 1)
+}
+.slide.closed{
+    max-height: 0;
+}
+.options {
+    left: 50;
 }
