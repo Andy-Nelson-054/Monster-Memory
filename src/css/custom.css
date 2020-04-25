@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Creepster&display=swap');
+
+body {
+    font-family: 'Creepster';
+}
+h1 {
+    color: #FD990D;
+}
+
+#outer-board {
+    background-color: #644B77;
+    /* background-color: #224870; */
+    height: 600px;
+    position: relative;
+}
+#game-menu{
+    position: absolute;
+    margin-top: 10%;
+    margin-left: 20%;
+}
+#inner-board {
+    background-color: #FACD63;
+}
+
+.top-block-100 {
+    margin-top: 100px;
+}
+
+.top-block-20 {
+    margin-top: 20px;
+}
+
+/* 
+#outer-board {
+    height: 200px;
+} */
+
+.control-panel {
+    vertical-align: bottom;
+}
+
+.game-card {
+    height: 80px;
+    width: 80px;
+    background-color: #FD990D !important;
+}
+.control-panel {
+    background-color: #3DA641 !important;
+}
+.card-back {
+    margin-top: 20px;
+    height: 75px;
+    width: 45px;
+}
+.card-face {
+    margin-top: 20px;
+    height: 45px;
+    width: 45px;
+}
+.material-icons {
+    height: 75px;
+    width: 45px;
+}
+.image-small {
+    height: 45px;
+    width: 45px;
+}
+.slide {
+    overflow-y: hidden;
+    max-height: 600px;
+
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: cubic-bezier(1, 1, 1, 1)
+}
+.slide.closed{
+    max-height: 0;
+}
+.options {
+    left: 50;
+}
