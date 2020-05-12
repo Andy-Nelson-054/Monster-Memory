@@ -10,7 +10,7 @@ h1 {
 #outer-board {
     background-color: #644B77;
     /* background-color: #224870; */
-    height: 600px;
+    height: 635px;
     position: relative;
 }
 #game-menu{
@@ -20,6 +20,12 @@ h1 {
 }
 #inner-board {
     background-color: #FACD63;
+}
+#game-board {
+    padding-bottom: 0px;
+}
+#game-timer {
+    font-size: 40px;
 }
 
 .top-block-100 {

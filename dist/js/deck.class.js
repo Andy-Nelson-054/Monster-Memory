@@ -1,4 +1,5 @@
 
+'use strict';
 /** 
   * desc this class will hold functions and methods related to the deck of cards
   * examples include get cardFaces(), shuffle(), and buildDeck()
@@ -7,8 +8,6 @@
 */
 export class Deck {
     constructor(faceCount, deckSize) {
-        // var imageCount = 50; //must be altered to reflect the number of images in /images directory
-
         this.faceCount = faceCount;
         this.deckSize = deckSize;
         this.imageCount = 50;
@@ -80,7 +79,6 @@ export class Deck {
     * @return void
     */
     buildBoard() {
-        console.log('build board');
         $('.card-back').attr('src', this.cardBack);
 
         var cardSpace = $(".card-face");
