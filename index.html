@@ -23,14 +23,16 @@
                 <div id="outer-board" class="card card">
                     <div id="game-board" class="card-content padding-bottom-0">
                         
-                        <!--Start Game Menu-->
-                            <div id="start-menu" class="col s3 offset-s5">
-                                Click to Start Game
+                        <!--Start Cover Menu-->
+                            <div id="cover-menu">
+                                <div id="start-menu" class="col card s3 offset-s5 menu-button">
+                                    Click to Start Game
+                                </div>
+                                <div id="rule-menu" class="col card s3 offset-s5 menu-button">
+                                    Rules
+                                </div>
                             </div>
-                            <!-- <div id="game-menu">
-                                <button>Start Game</button>
-                            </div> -->
-                        <!--End Game Menu-->
+                        <!--End Cover Menu-->
                         
                         <!--Game Board here-->
                         <div id="inner-board" class="card card large slide closed">
@@ -186,8 +188,11 @@
                     </div>
                     -->
                     <!--End Control Panel-->
-                    <div id="game-timer" class="card col offset-s8">
-                        2:00
+                    <div id="control-panel" hidden>
+                        <div id="timer-stop" class="card col offset-s5 control-panel-item" >Stop</div>
+                        <div id="game-timer" class="card col offset-s8 control-panel-item">
+                            2:00
+                        </div>  
                     </div>
 
                 </div>

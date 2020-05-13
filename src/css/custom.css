@@ -24,10 +24,19 @@ h1 {
 #game-board {
     padding-bottom: 0px;
 }
-#game-timer {
-    font-size: 40px;
+#cover-menu {
+    margin-top: 20%;
+}
+#timer-stop {
+    cursor: pointer;
 }
 
+.menu-button {
+    font-size: 20px;
+    padding: 15px; 
+    text-align: center;
+    cursor: pointer;
+}
 .top-block-100 {
     margin-top: 100px;
 }
@@ -52,6 +61,13 @@ h1 {
 }
 .control-panel {
     background-color: #3DA641 !important;
+}
+.control-panel-item {
+    font-size: 40px;
+    margin-top: -15px;
+    background-color: #181a1b;
+    color: white;
+    display: inline-block;
 }
 .card-back {
     margin-top: 20px;

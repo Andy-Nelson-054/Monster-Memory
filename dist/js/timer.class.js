@@ -4,6 +4,7 @@ export class Timer {
     constructor(timeCount) {
         this.timeCount = timeCount;
         this.timeReset = timeCount;
+        this.continueCount = true;
     }
 
     reset() {
@@ -11,7 +12,7 @@ export class Timer {
     }
 
     stop() {
-        console.log('Stop!');
+        this.continueCount = false;
     }
 
     display() {
@@ -25,7 +26,9 @@ export class Timer {
 
     countDown() {
         setInterval(() => {
-            this.display();
+            if (this.continueCount) {
+                this.display();
+            }
         }, 1000);
     }
 
