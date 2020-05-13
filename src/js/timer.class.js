@@ -1,21 +1,21 @@
 'use strict';
 
 export class Timer {
-    constructor(timeCount) {
+    constructor (timeCount) {
         this.timeCount = timeCount;
         this.timeReset = timeCount;
     }
 
-    reset() {
+    reset () {
         return this.timeCount = this.timeReset;
     }
 
-    stop() {
-        console.log('Stop!');
+    stop () {
+        console.log('Stop!')
     }
 
-    display() {
-        this.timeCount--;
+    display () {
+        this.timeCount --;
         if (this.timeCount > 0) {
             console.log(this.timeCount);
             document.getElementById('game-timer').innerHTML = this.timeCount;
@@ -23,10 +23,9 @@ export class Timer {
         //Timer doesn't stop yet! just stops displaying
     }
 
-    countDown() {
-        setInterval(() => {
-            this.display();
-        }, 1000);
+    countDown () {
+        setInterval( () => { this.display() }, 1000);
     }
+
 
 }

@@ -6,6 +6,7 @@
   * author Andy Nelson andy.nelson.054@gmail.com
   * requires jquery-3.4.1.min.js
 */
+
 export class Deck {
     constructor(faceCount, deckSize) {
         this.faceCount = faceCount;
