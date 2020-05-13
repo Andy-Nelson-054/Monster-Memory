@@ -21,7 +21,6 @@ export class Timer {
             console.log(this.timeCount);
             document.getElementById('game-timer').innerHTML = this.timeCount;
         } else this.stop();
-        //Timer doesn't stop yet! just stops displaying
     }
 
     countDown () {
