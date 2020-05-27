@@ -3,32 +3,20 @@
 export class Timer {
     constructor (timeCount) {
         this.timeCount = timeCount;
-        this.timeReset = timeCount;
-        this.continueCount = true;
+        this.isRunning = false
     }
 
-    reset () {
-        return this.timeCount = this.timeReset;
-    }
-
-    stop () {
-        this.continueCount = false;
-    }
-
-    display () {
-        this.timeCount --;
-        if (this.timeCount > 0) {
-            console.log(this.timeCount);
-            document.getElementById('game-timer').innerHTML = this.timeCount;
-        } else this.stop();
-    }
-
-    countDown () {
-        setInterval( () => { 
-            if(this.continueCount) {
-                this.display() 
+    run () {
+        this.isRunning = true;
+        this.runTimer = setInterval(() => {
+            if (this.timeCount > -1) {
+                document.getElementById('game-timer').innerHTML = this.timeCount;
+                this.timeCount --;
             }
         }, 1000);
     }
 
+    stop () {
+        clearInterval(this.runTimer);
+    }
 }

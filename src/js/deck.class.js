@@ -1,7 +1,8 @@
 
 'use strict';
 /** 
-  * desc this class will hold functions and methods related to the deck of cards
+  * desc this class will hold functions and methods related to the deck of 
+  * cards
   * examples include get cardFaces(), shuffle(), and buildDeck()
   * author Andy Nelson andy.nelson.054@gmail.com
   * requires jquery-3.4.1.min.js
@@ -14,7 +15,8 @@ export class Deck {
     }
 
     /*
-    * @desc getter function to randomly selec image from /images directory to be displayed on card backs
+    * @desc getter function to randomly selec image from /images directory to 
+     be displayed on card backs
     * @param N/A
     * @return string - filepath to selected image
     */
@@ -24,7 +26,8 @@ export class Deck {
     }
 
     /*
-    * @desc getter function to randomly select images from /images directory to be displayed on card faces
+    * @desc getter function to randomly select images from /images directory 
+      to be displayed on card faces
     * @param N/A
     * @return string - filepath to selected image
     */
@@ -44,14 +47,16 @@ export class Deck {
                     i--;
                 }
             }
-            //assign upper half of deck. Mirrors the bottom half. Deck still needs to be shuffled
+            //assign upper half of deck. Mirrors the bottom half. Deck still 
+            //needs to be shuffled
             cardFace[i + this.faceCount] = cardFace[i];
         }
         return cardFace;
     }
 
     /*
-    * @desc getter function to randomly selec image from /images directory to be displayed on card backs
+    * @desc getter function to randomly selec image from /images directory to be
+     displayed on card backs
     * @param N/A
     * @return string - filepath to selected image
     */
@@ -89,11 +94,3 @@ export class Deck {
     }
 }
 
-//test
-// const newDeck = new Deck(8, 16);
-// newDeck.buildBoard();
-
-// //will be moved to game class
-// const gameTable = document.getElementById('outer-board');
-// const gameBoard = document.getElementById('inner-board');
-// gameTable.addEventListener('click', function (){ $(gameBoard).removeClass('closed') }, false);

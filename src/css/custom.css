@@ -1,15 +1,22 @@
 @import url('https://fonts.googleapis.com/css?family=Creepster&display=swap');
 
 body {
+    background-color: #37474F;
     font-family: 'Creepster';
 }
 h1 {
     color: #FD990D;
 }
-
+#game-timer, #timer-stop {
+    width: 100px;
+    text-align: center;
+}
+#control-panel {
+    /* vertical-align: bottom; */
+    margin-top: 40px;
+}
 #outer-board {
     background-color: #644B77;
-    /* background-color: #224870; */
     height: 635px;
     position: relative;
 }
@@ -36,6 +43,8 @@ h1 {
     padding: 15px; 
     text-align: center;
     cursor: pointer;
+    background-color: black;
+    color: orange;
 }
 .top-block-100 {
     margin-top: 100px;
@@ -50,24 +59,20 @@ h1 {
     height: 200px;
 } */
 
-.control-panel {
-    vertical-align: bottom;
-}
+
 
 .game-card {
     height: 80px;
     width: 80px;
-    background-color: #FD990D !important;
-}
-.control-panel {
-    background-color: #3DA641 !important;
+    /* background-color: #FD990D !important; */
+    background-color: #F08D01 !important;
 }
 .control-panel-item {
     font-size: 40px;
     margin-top: -15px;
-    background-color: #181a1b;
-    color: white;
-    display: inline-block;
+    background-color: #3DA641;
+    color: black;
+    display: inline-block !important;
 }
 .card-back {
     margin-top: 20px;
@@ -86,6 +91,10 @@ h1 {
 .image-small {
     height: 45px;
     width: 45px;
+}
+.timer-image {
+    height: 35px;
+    width: 35px;
 }
 .slide {
     overflow-y: hidden;
