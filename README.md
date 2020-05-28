@@ -5,10 +5,15 @@
 - [ ] Create game class
 - [x] Move files that don't contain ES6 syntax out of src
 - [x] Fix alignment of control panel buttons
-- [ ] Complete Game timer
-- [ ] Set up cards to only flip two at a time
+- [x] Complete Game timer
+- [x] Set up cards to only flip two at a time
 - [ ] Settle on color scheme
-- [ ] Game starts after first card flip
+- [x] Game starts after first card flip
+- [x] Fix card pattern (not random)
+- [ ] Migrate functionality from game.js to game.class.js / rename game.js to main.js
+- [ ] Refactor shuffle functionality in deck.class.js
+- [x] "Stop" button stops timer
+
 
 ## Setup
 ### Startup Commands
@@ -17,10 +22,13 @@ Can be viewed/ changed in package.json\
 ```npm start``` to start local server
 
 ## Game Feature Checklist
-- [ ] Only two cards flipped at a time
+- [x] Only two cards flipped at a time
 - [ ] Disable matched cards and remove image
 - [ ] Add points for matched cards
 
-- [ ] Timer
+- [x] Timer
 - [ ] Point bonus for time on board
-- [ ] Button to reset/return to game
+
+- [ ] "Stop" button ends game and displays end game screen
+- [ ] End game screen button to reset game board and return to main menu
+- [ ] Rules screen to display rules to user. Return button to return to main menu

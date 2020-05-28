@@ -61,22 +61,24 @@ export class Deck {
     * @param N/A
     * @return string - filepath to selected image
     */
-    static shuffleDeck() {
-        let randIndices = new Array(this.deckSize);
+    shuffleDeck() {
+        let unorderedDeck = this.cardFaces;
         let readyDeck = new Array(this.deckSize);
-        let maxRepeat = 2;
-        let repeated = 0;
+        let randIndices = new Array(this.deckSize);
         let randIndex;
+        let maxRepeat = 1;
 
         for (let i = 0; i < this.deckSize; i++) {
-            randIndex[i] = Math.floor(Math.random() * this.deckSize);
+            randIndices[i] = Math.floor(Math.random() * this.deckSize);
             for (let j = 0; j < i; j++) {
-                if (randIndex[i] === randIndex[j]) {
-                    repeated === maxRepeat ? i-- : repeated++;
+                if (randIndices[i] === randIndices[j]) {
+                    i--;
                 }
             }
-            readyDeck[i] = cardFace[randIndices[i]];
+            randIndex = randIndices[i];
+            readyDeck[i] = unorderedDeck[randIndex];
         }
+        return readyDeck;
     }
 
     /*
@@ -85,10 +87,12 @@ export class Deck {
     * @return void
     */
     buildBoard() {
+        //console.log(this.shuffleDeck());
         $('.card-back').attr('src', this.cardBack);
 
         var cardSpace = $(".card-face");
-        var fullDeck = this.cardFaces;
+        var fullDeck = this.shuffleDeck();
+        //console.log(fullDeck);
         for (var i = 0; i < this.deckSize; i++) {
             $(cardSpace[i]).attr('src', 'images/' + fullDeck[i] + '.png');
         }
