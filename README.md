@@ -29,6 +29,8 @@ Can be viewed/ changed in package.json\
 - [x] Timer
 - [ ] Point bonus for time on board
 
+- [ ] Ensure a card face can't be used for card back
+- [ ] Reveal cards before starting game
 - [ ] "Stop" button ends game and displays end game screen
 - [ ] End game screen button to reset game board and return to main menu
 - [ ] Rules screen to display rules to user. Return button to return to main menu

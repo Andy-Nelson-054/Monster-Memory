@@ -2,10 +2,11 @@
 
 import { Deck } from "./deck.class.js";
 import { Timer } from "./timer.class.js";
-//import { Game } from "./game.class.js";
+import { Game } from "./game.class.js";
 
 const gameTimer = new Timer(60);
 const newDeck = new Deck(8, 16);
+const newGame = new Game();
 newDeck.buildBoard();
 
 //will be moved to game class
@@ -16,9 +17,6 @@ const startMenu = document.getElementById('start-menu');
 const timerStop = document.getElementById('timer-stop');
 const controlPanel = document.getElementById('control-panel');
 const cards = document.getElementsByClassName('card-title');
-let cardsFlipped = 0;
-let flippedMax = 2;
-//const gameTimer = document.getElementById('game-timer');
 
 gameTable.addEventListener('click', function () {
 
@@ -28,21 +26,13 @@ gameTable.addEventListener('click', function () {
     $(coverMenu).attr('hidden', true);
     $(controlPanel).attr('hidden', false);
   }
-  //first card click starts timer 
-  if (event.target.classList.contains('game-card') && !gameTimer.isRunning) {
-    gameTimer.run();
-  }
-  //flip cards back over
+
+  // card clicks 
   if (event.target.classList.contains('game-card')) {
-    cardsFlipped++;
-    if (cardsFlipped === flippedMax) {
-      setTimeout(function () {
-        for (let card of cards) {
-          card.click();
-          cardsFlipped = 0;
-        }
-      }, 500);
+    if (!gameTimer.isRunning) {
+      gameTimer.run();
     }
+    newGame.cardClick(event.target);
   }
 
   //timer stop

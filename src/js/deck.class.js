@@ -65,7 +65,7 @@ export class Deck {
         let readyDeck = new Array(this.deckSize);
         let randIndices = new Array(this.deckSize);
         let randIndex;
-        let maxRepeat = 1;
+        
         
         for (let i = 0; i < this.deckSize; i++) {
             randIndices[i] = Math.floor(Math.random() * this.deckSize);
@@ -86,15 +86,16 @@ export class Deck {
     * @return void
     */
     buildBoard() {
-        //console.log(this.shuffleDeck());
         $('.card-back').attr('src', this.cardBack);
 
         var cardSpace = $(".card-face");
         var fullDeck = this.shuffleDeck();
-        //console.log(fullDeck);
+        
         for (var i = 0; i < this.deckSize; i++) {
             $(cardSpace[i]).attr('src', 'images/' + fullDeck[i] + '.png');
         }
     }
+
+
 }
 
