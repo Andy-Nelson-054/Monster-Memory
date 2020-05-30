@@ -4,7 +4,7 @@ import { Deck } from "./deck.class.js";
 import { Timer } from "./timer.class.js";
 import { Game } from "./game.class.js";
 
-const gameTimer = new Timer(60);
+const gameTimer = new Timer(5);
 const newDeck = new Deck(8, 16);
 const newGame = new Game();
 newDeck.buildBoard();
@@ -18,6 +18,7 @@ const startMenu = document.getElementById('start-menu');
 const timerStop = document.getElementById('timer-stop');
 const controlPanel = document.getElementById('control-panel');
 const cards = document.getElementsByClassName('card-title');
+const scoreDisplay = document.getElementById('score-display');
 
 gameTable.addEventListener('click', function () {
   
@@ -27,6 +28,7 @@ gameTable.addEventListener('click', function () {
     $(coverMenu).attr('hidden', true);
     $(controlPanel).attr('hidden', false);
   }
+  
 
   // card clicks 
   if(event.target.classList.contains('game-card')) {
@@ -42,3 +44,8 @@ gameTable.addEventListener('click', function () {
   }
 
 }, false);
+
+
+//to display score table
+//gameBoard.classList.add('hidden');
+//scoreDisplay.classList.remove('closed');

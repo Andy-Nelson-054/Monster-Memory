@@ -7,7 +7,7 @@ body {
 h1 {
     color: #FD990D;
 }
-#game-timer, #timer-stop {
+#game-timer, #timer-stop, #game-score {
     width: 100px;
     text-align: center;
 }
@@ -60,12 +60,17 @@ h1 {
 } */
 
 
-
 .game-card {
     height: 80px;
     width: 80px;
     /* background-color: #FD990D !important; */
     background-color: #F08D01 !important;
+}
+.fade-out {
+    height: 0;
+}
+.fade-out {
+    transition: height 1s;
 }
 .control-panel-item {
     font-size: 40px;
@@ -109,4 +114,8 @@ h1 {
 }
 .options {
     left: 50;
+}
+
+.hidden {
+    display: none;
 }

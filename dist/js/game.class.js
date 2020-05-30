@@ -11,7 +11,6 @@ export class Game {
         this.flippedCount = 0;
         this.flippedMax = 2;
         this.flippedCards = [this.flippedMax];
-        //this.flippedCards = [this.flippedMax];
         this.cards = document.getElementsByClassName('card-title');
         this.score = 0;
     }
@@ -47,26 +46,61 @@ export class Game {
 
     //update score, display it on screen, remove those cards from screen 
     //(remove a class/ add another)
+    // checkMatch(clickedCard) {
+    //     let cardsMatch = false;
+
+    //     let cardFace = clickedCard.querySelector('.card-face')
+    //         .getAttribute('src');
+
+    //         let scoreBoard = document.getElementById('game-score');
+
+    //     this.flippedCards[this.flippedCount - 1] = cardFace;
+    //     if(this.flippedCount === this.flippedMax) {
+    //         for(let i = 0; i < this.flippedCards.length; i++) {
+    //             if (this.flippedCards[0] === this.flippedCards[i]) {
+    //                 cardsMatch = true;
+    //             } else cardsMatch = false;
+    //         }
+    //         //move to its own method?
+    //         if(cardsMatch) {
+    //             this.score ++;
+    //             clickedCard.classList.add('fade-out');
+    //         }
+    //         scoreBoard.innerHTML = this.score;
+    //     }
+    // }
+
+    //refactored
     checkMatch(clickedCard) {
         let cardsMatch = false;
+
         let cardFace = clickedCard.querySelector('.card-face').getAttribute('src');
+
         let scoreBoard = document.getElementById('game-score');
-        //console.log(`should be empty: ${this.flippedCards}`);
-        this.flippedCards[this.flippedCount - 1] = cardFace;
-        //console.log(this.flippedCards);
+
+        this.flippedCards[this.flippedCount - 1] = clickedCard;
         if (this.flippedCount === this.flippedMax) {
             for (let i = 0; i < this.flippedCards.length; i++) {
-                if (this.flippedCards[0] === this.flippedCards[i]) {
+                if (this.flippedCards[0].querySelector('.card-face').getAttribute('src') === this.flippedCards[i].querySelector('.card-face').getAttribute('src')) {
                     cardsMatch = true;
                 } else cardsMatch = false;
             }
-            console.log(cardsMatch);
+            //move to its own method?
             if (cardsMatch) {
-                this.score++;
+                this.score += 5;
+                for (let j = 0; j < this.flippedCards.length; j++) {
+                    this.flippedCards[j].classList.add('fade-out');
+                }
             }
-            console.log(`score: ${this.score}`);
             scoreBoard.innerHTML = this.score;
         }
+    }
+
+    static endGame() {
+        document.getElementById('game-board').classList.add('closed');
+        document.getElementById('control-panel').classList.add('closed');
+
+        document.getElementById('score-display').classList.remove('closed');
     }
 
 }
