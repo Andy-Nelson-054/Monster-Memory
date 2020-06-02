@@ -21,6 +21,7 @@ export class Game {
     * @return string - filepath to selected image
     */
     cardClick(clickedCard) {
+        //clickedCard.classList.indexOf('card-title') ? alert('Double') : alert('Single');
         this.flippedCount++;
         this.cardFlip();
         this.checkMatch(clickedCard);
@@ -73,19 +74,27 @@ export class Game {
     //refactored
     checkMatch(clickedCard) {
         let cardsMatch = false;
-
         let cardFace = clickedCard.querySelector('.card-face').getAttribute('src');
-
         let scoreBoard = document.getElementById('game-score');
 
+        // prevent counting same card as a match
+        clickedCard.classList.add('flipped');
+
         this.flippedCards[this.flippedCount - 1] = clickedCard;
+        //if all allowable cards have been flipped        
         if (this.flippedCount === this.flippedMax) {
             for (let i = 0; i < this.flippedCards.length; i++) {
+
+                //check if image src matches
+                //needs refactoring to match all new flips to previous ones
                 if (this.flippedCards[0].querySelector('.card-face').getAttribute('src') === this.flippedCards[i].querySelector('.card-face').getAttribute('src')) {
-                    cardsMatch = true;
+                    //check that cards are not the same card
+                    if (!this.flippedCards[0].isSameNode(this.flippedCards[i])) {
+                        cardsMatch = true;
+                    }
                 } else cardsMatch = false;
             }
-            //move to its own method?
+            //remove matched cards from game board and increase score
             if (cardsMatch) {
                 this.score += 5;
                 for (let j = 0; j < this.flippedCards.length; j++) {
@@ -99,7 +108,6 @@ export class Game {
     static endGame() {
         document.getElementById('game-board').classList.add('closed');
         document.getElementById('control-panel').classList.add('closed');
-
         document.getElementById('score-display').classList.remove('closed');
     }
 

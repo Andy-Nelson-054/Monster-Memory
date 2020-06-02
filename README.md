@@ -2,7 +2,7 @@
 
 ## Current State
 
-- [ ] Create game class
+- [x] Create game class
 - [x] Move files that don't contain ES6 syntax out of src
 - [x] Fix alignment of control panel buttons
 - [x] Complete Game timer
@@ -34,6 +34,7 @@ Can be viewed/ changed in package.json\
 - [ ] "Stop" button ends game and displays end game screen
 - [ ] End game screen button to reset game board and return to main menu
 - [ ] Rules screen to display rules to user. Return button to return to main menu
+- [ ] Reveal cards for 3 seconds before flipping
 
 ## Problems
 

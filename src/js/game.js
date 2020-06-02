@@ -4,7 +4,7 @@ import { Deck } from "./deck.class.js";
 import { Timer } from "./timer.class.js";
 import { Game } from "./game.class.js";
 
-const gameTimer = new Timer(5);
+const gameTimer = new Timer(60);
 const newDeck = new Deck(8, 16);
 const newGame = new Game();
 newDeck.buildBoard();
@@ -31,7 +31,8 @@ gameTable.addEventListener('click', function () {
   
 
   // card clicks 
-  if(event.target.classList.contains('game-card')) {
+  if(event.target.classList.contains('click')) {
+    
     if(!gameTimer.isRunning) {
       gameTimer.run();
     }
