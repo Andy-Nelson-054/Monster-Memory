@@ -12,6 +12,7 @@ export class Game {
         this.flippedMax = 2;
         this.flippedCards = [this.flippedMax];
         this.cards = document.getElementsByClassName('card-title');
+        this.matchCount = 0;
         this.score = 0;
     }
 
@@ -39,7 +40,7 @@ export class Game {
             gameTable.addEventListener('click', () => {
                 // card clicks 
                 if (event.target.classList.contains('click')) {
-                    this.cardClick(event.target);
+                    this.cardClick(event.target, newDeck, gameTimer);
                 }
 
                 //timer stop
@@ -83,12 +84,12 @@ export class Game {
     * @param N/A
     * @return string - filepath to selected image
     */
-    cardClick(clickedCard) {
+    cardClick(clickedCard, newDeck, gameTimer) {
         console.log(`clickedCard: ${clickedCard}`);
         //clickedCard.classList.indexOf('card-title') ? alert('Double') : alert('Single');
         this.flippedCount++;
         this.cardFlip();
-        this.checkMatch(clickedCard);
+        this.checkMatch(clickedCard, newDeck, gameTimer);
     }
 
     /*
@@ -112,31 +113,32 @@ export class Game {
 
     //update score, display it on screen, remove those cards from screen 
     //(remove a class/ add another)
-    checkMatch(clickedCard) {
-        let cardsMatch = false;
+    // checkMatch(clickedCard) {
+    //     let cardsMatch = false;
 
-        let cardFace = clickedCard.querySelector('.card-face').getAttribute('src');
+    //     let cardFace = clickedCard.querySelector('.card-face')
+    //         .getAttribute('src');
 
-        let scoreBoard = document.getElementById('game-score');
+    //         let scoreBoard = document.getElementById('game-score');
 
-        this.flippedCards[this.flippedCount - 1] = cardFace;
-        if (this.flippedCount === this.flippedMax) {
-            for (let i = 0; i < this.flippedCards.length; i++) {
-                if (this.flippedCards[0] === this.flippedCards[i]) {
-                    cardsMatch = true;
-                } else cardsMatch = false;
-            }
-            //move to its own method?
-            if (cardsMatch) {
-                this.score++;
-                clickedCard.classList.add('fade-out');
-            }
-            scoreBoard.innerHTML = this.score;
-        }
-    }
+    //     this.flippedCards[this.flippedCount - 1] = cardFace;
+    //     if(this.flippedCount === this.flippedMax) {
+    //         for(let i = 0; i < this.flippedCards.length; i++) {
+    //             if (this.flippedCards[0] === this.flippedCards[i]) {
+    //                 cardsMatch = true;
+    //             } else cardsMatch = false;
+    //         }
+    //         //move to its own method?
+    //         if(cardsMatch) {
+    //             this.score ++;
+    //             clickedCard.classList.add('fade-out');
+    //         }
+    //         scoreBoard.innerHTML = this.score;
+    //     }
+    // }
 
     //refactored
-    checkMatch(clickedCard) {
+    checkMatch(clickedCard, newDeck, gameTimer) {
         let cardsMatch = false;
         let cardFace = clickedCard.querySelector('.card-face').getAttribute('src');
         let scoreBoard = document.getElementById('game-score');
@@ -164,8 +166,15 @@ export class Game {
                 for (let j = 0; j < this.flippedCards.length; j++) {
                     this.flippedCards[j].classList.add('fade-out');
                 }
+                this.matchCount++;
+                if (this.matchCount === newDeck.faceCount) {
+                    gameTimer.stop();
+                    alert('game over');
+                }
             }
             scoreBoard.innerHTML = this.score;
+            console.log(`faceCount: ${newDeck.faceCount}`);
+            console.log(`matchCount: ${this.matchCount}`);
         }
     }
 
