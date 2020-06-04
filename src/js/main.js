@@ -26,7 +26,7 @@ gameTable.addEventListener('click', function () {
   
   //start menu
   if(event.target === startMenu) {
-    newGame.init();
+    newGame.start();
   }
   
 

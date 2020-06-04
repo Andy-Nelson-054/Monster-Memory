@@ -15,9 +15,10 @@ export class Game {
         this.score = 0;
     }
 
-    init() {
+    start() {
         const gameTimer = new Timer(60);
         const newDeck = new Deck(8, 16);
+
         newDeck.buildBoard();
 
         const gameTable = document.getElementById('outer-board');
@@ -31,39 +32,49 @@ export class Game {
         $(coverMenu).attr('hidden', true);
         $(controlPanel).attr('hidden', false);
 
-        this.cardReveal();
+        this.cardReveal(gameTimer);
 
-        gameTable.addEventListener('click', () => {
-            // card clicks 
-            if (event.target.classList.contains('click')) {
-                console.log(`event.target: ${event.target}`);
-                if (!gameTimer.isRunning) {
-                    gameTimer.run();
+        //need lots of refactoring. Use promises?
+        setTimeout(() => {
+            gameTable.addEventListener('click', () => {
+                // card clicks 
+                if (event.target.classList.contains('click')) {
+                    this.cardClick(event.target);
                 }
-                //this.cardClick(event.target);
-            }
 
-            //timer stop
-            if (event.target === timerStop) {
-                gameTimer.stop();
-            }
-        }, false);
+                //timer stop
+                if (event.target === timerStop) {
+                    gameTimer.stop();
+                }
+            }, false);
+        }, 3000);
     }
 
-    cardReveal() {
+    cardReveal(timer) {
         //Need to better understand why this works
-        let cardBacks = document.getElementsByClassName('game-card'); //remove
-        for (var i = 0; i <= 50; i++) {
+        //needs lots of refactoring. Use promises?
+        let cardBacks = document.getElementsByClassName('click');
+        setTimeout(() => {
+            for (var i = 0; i <= cardBacks.length; i++) {
+                (() => {
 
-            (function () {
+                    var j = i;
+                    setTimeout(() => {
+                        cardBacks[j].click(); //throws error, why?
+                        cardBacks[j].classList.add('revealed');
+                    }, 50 * j);
+                })();
+            }
+        }, 1000);
 
-                var j = i;
-                setTimeout(function () {
-                    cardBacks[j].click();
-                    cardBacks[j].classList.add('revealed');
-                }, 25 * j);
-            })();
-        }
+        //hide cards again, start timer
+        let revealedCards = document.getElementsByClassName('card-title');
+        setTimeout(() => {
+            for (let i = 0; i < revealedCards.length; i++) {
+                revealedCards[i].click();
+            }
+            timer.run();
+        }, 5000);
     }
 
     /*
@@ -101,29 +112,28 @@ export class Game {
 
     //update score, display it on screen, remove those cards from screen 
     //(remove a class/ add another)
-    // checkMatch(clickedCard) {
-    //     let cardsMatch = false;
+    checkMatch(clickedCard) {
+        let cardsMatch = false;
 
-    //     let cardFace = clickedCard.querySelector('.card-face')
-    //         .getAttribute('src');
+        let cardFace = clickedCard.querySelector('.card-face').getAttribute('src');
 
-    //         let scoreBoard = document.getElementById('game-score');
+        let scoreBoard = document.getElementById('game-score');
 
-    //     this.flippedCards[this.flippedCount - 1] = cardFace;
-    //     if(this.flippedCount === this.flippedMax) {
-    //         for(let i = 0; i < this.flippedCards.length; i++) {
-    //             if (this.flippedCards[0] === this.flippedCards[i]) {
-    //                 cardsMatch = true;
-    //             } else cardsMatch = false;
-    //         }
-    //         //move to its own method?
-    //         if(cardsMatch) {
-    //             this.score ++;
-    //             clickedCard.classList.add('fade-out');
-    //         }
-    //         scoreBoard.innerHTML = this.score;
-    //     }
-    // }
+        this.flippedCards[this.flippedCount - 1] = cardFace;
+        if (this.flippedCount === this.flippedMax) {
+            for (let i = 0; i < this.flippedCards.length; i++) {
+                if (this.flippedCards[0] === this.flippedCards[i]) {
+                    cardsMatch = true;
+                } else cardsMatch = false;
+            }
+            //move to its own method?
+            if (cardsMatch) {
+                this.score++;
+                clickedCard.classList.add('fade-out');
+            }
+            scoreBoard.innerHTML = this.score;
+        }
+    }
 
     //refactored
     checkMatch(clickedCard) {
