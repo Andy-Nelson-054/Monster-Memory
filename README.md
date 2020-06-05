@@ -18,8 +18,8 @@
 ## Setup
 ### Startup Commands
 Can be viewed/ changed in package.json\
-```npm run build``` to transpile ES6 code\
-```npm start``` to start local server
+```npm run-script build``` to transpile ES6 code\
+```npm run-script start``` to start local server
 
 ## Game Feature Checklist
 - [x] Only two cards flipped at a time
