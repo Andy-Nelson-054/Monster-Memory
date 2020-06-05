@@ -8,6 +8,11 @@ export class Timer {
         this.isRunning = false;
     }
 
+    /*
+    * @desc Start timer and display it on game board
+    * @param N/A
+    * @return 
+    */
     run() {
         this.isRunning = true;
         this.runTimer = setInterval(() => {
@@ -16,7 +21,7 @@ export class Timer {
                 this.timeCount--;
             }
             //Hacky solution, but theres about a 2 second delay from 
-            //timer to display so we're checking the display
+            //timer to display so we're checking the display, not timeCount
             if (document.getElementById('game-timer').textContent === '0') {
                 Game.endGame();
                 this.stop();
@@ -27,6 +32,11 @@ export class Timer {
         }, 1000);
     }
 
+    /*
+    * @desc End timer
+    * @param N/A
+    * @return N/A
+    */
     stop() {
         clearInterval(this.runTimer);
     }

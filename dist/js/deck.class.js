@@ -1,12 +1,5 @@
 
 'use strict';
-/** 
-  * desc this class will hold functions and methods related to the deck of 
-  * cards
-  * examples include get cardFaces(), shuffle(), and buildDeck()
-  * author Andy Nelson andy.nelson.054@gmail.com
-  * requires jquery-3.4.1.min.js
-*/
 
 export class Deck {
     constructor(faceCount, deckSize) {
@@ -16,7 +9,7 @@ export class Deck {
     }
 
     /*
-    * @desc getter function to randomly selec image from /images directory to 
+    * @desc getter function to randomly select image to 
      be displayed on card backs
     * @param N/A
     * @return string - filepath to selected image
@@ -27,10 +20,10 @@ export class Deck {
     }
 
     /*
-    * @desc getter function to randomly select images from /images directory 
-      to be displayed on card faces
+    * @desc getter function to randomly select images 
+      to be displayed on card faces. 
     * @param N/A
-    * @return string - filepath to selected image
+    * @return cardFace - array of filepaths to images
     */
     get cardFaces() {
         let cardBack = this.cardBack;
@@ -42,7 +35,7 @@ export class Deck {
             randCard = Math.floor(Math.random() * this.imageCount + 1);
             cardFace[i] = randCard;
 
-            //reassign repeated cards
+            //reassign repeated cards (add reassignment if image is used for card back)
             for (var j = 0; j < i; j++) {
                 if (cardFace[j] === randCard || randCard === cardBack) {
                     i--;
@@ -56,10 +49,9 @@ export class Deck {
     }
 
     /*
-    * @desc getter function to randomly selec image from /images directory to be
-     displayed on card backs
+    * @desc 
     * @param N/A
-    * @return string - filepath to selected image
+    * @return readyDeck - Array of shuffled cards ready for game
     */
     shuffleDeck() {
         let unorderedDeck = this.cardFaces;
@@ -83,7 +75,7 @@ export class Deck {
     /*
     * @desc deals cards onto the game board ***MOVE THIS TO GAME CLASS***
     * @param N/A
-    * @return void
+    * @return N/A
     */
     buildBoard() {
         $('.card-back').attr('src', this.cardBack);

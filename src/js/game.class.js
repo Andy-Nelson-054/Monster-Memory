@@ -16,8 +16,14 @@ export class Game {
         this.score = 0;
     }
 
+    /*
+    * @desc Initialize game by instantiating game timer and deck, revealing game
+    * board, revealing card faces, and adding event listener to cards.
+    * @param N/A 
+    * @return N/A
+    */
     start() {
-        const gameTimer = new Timer(60);
+        const gameTimer = new Timer(5);
         const newDeck = new Deck(8, 16);
         
         newDeck.buildBoard();
@@ -54,9 +60,14 @@ export class Game {
         
     }
 
+    /*
+    * @desc Reveals cards at start of game in a waterfall. Hides cards again after a pause
+    *       Needs refactoring. Use promises
+    * @param Timer
+    * @return N/A
+    */
     cardReveal(timer) {
         //Need to better understand why this works
-        //needs lots of refactoring. Use promises?
         let cardBacks = document.getElementsByClassName('click');
         setTimeout(() => {
             for (var i = 0; i <= cardBacks.length ; i++) {
@@ -87,27 +98,24 @@ export class Game {
     
 
     /*
-    * @desc getter function to randomly selec image from /images directory to be
-     displayed on card backs
+    * @desc Counts number of cards clicked. Calls cardFlip(), calls checkMatch()
+    * Get rid of this method and move everything to cardFlip()?
     * @param N/A
-    * @return string - filepath to selected image
+    * @return N/A
     */
     cardClick(clickedCard, newDeck, gameTimer) {
-        console.log(`clickedCard: ${clickedCard}`);
-        //clickedCard.classList.indexOf('card-title') ? alert('Double') : alert('Single');
         this.flippedCount++;
         this.cardFlip();
         this.checkMatch(clickedCard, newDeck, gameTimer);
     }
 
     /*
-    * @desc getter function to randomly selec image from /images directory to be
-     displayed on card backs
-    * @param N/A
-    * @return string - filepath to selected image
+    * @desc Flips cards back after a delay if maximum amount of allowed cards
+    * are flipped.
+    * @param N/A 
+    * @return N/A
     */
    cardFlip() {
-    console.log('cardFlip');
     if(this.flippedCount === this.flippedMax) {
             //flip cards after half a second
             setTimeout(() => {
@@ -119,33 +127,11 @@ export class Game {
         }
     }
 
-    //update score, display it on screen, remove those cards from screen 
-    //(remove a class/ add another)
-    // checkMatch(clickedCard) {
-    //     let cardsMatch = false;
-        
-    //     let cardFace = clickedCard.querySelector('.card-face')
-    //         .getAttribute('src');
-        
-    //         let scoreBoard = document.getElementById('game-score');
-        
-    //     this.flippedCards[this.flippedCount - 1] = cardFace;
-    //     if(this.flippedCount === this.flippedMax) {
-    //         for(let i = 0; i < this.flippedCards.length; i++) {
-    //             if (this.flippedCards[0] === this.flippedCards[i]) {
-    //                 cardsMatch = true;
-    //             } else cardsMatch = false;
-    //         }
-    //         //move to its own method?
-    //         if(cardsMatch) {
-    //             this.score ++;
-    //             clickedCard.classList.add('fade-out');
-    //         }
-    //         scoreBoard.innerHTML = this.score;
-    //     }
-    // }
-
-    //refactored
+    /*
+    * @desc 
+    * @param clickedCard, newDeck, gameTimer 
+    * @return N/A
+    */
     checkMatch(clickedCard, newDeck, gameTimer) {
         let cardsMatch = false;
         let cardFace = clickedCard.querySelector('.card-face')
@@ -153,7 +139,7 @@ export class Game {
         let scoreBoard = document.getElementById('game-score');
 
         // prevent counting same card as a match
-        clickedCard.classList.add('flipped');
+        //clickedCard.classList.add('flipped');
 
         this.flippedCards[this.flippedCount - 1] = clickedCard;
         //if all allowable cards have been flipped        
@@ -183,15 +169,22 @@ export class Game {
                 }
             }
             scoreBoard.innerHTML = this.score;
-            console.log(`faceCount: ${newDeck.faceCount}`);
-            console.log(`matchCount: ${this.matchCount}`);
         }
     }
 
+    /*
+    * @desc Close game board and reveal end-game score  view
+    * @param N/A
+    * @return N/A
+    */
     static endGame() {
         document.getElementById('game-board').classList.add('closed');
+        document.getElementById('game-board').classList.add('slide');
         document.getElementById('control-panel').classList.add('closed');
+        document.getElementById('control-panel').classList.add('slide');
         document.getElementById('score-display').classList.remove('closed');
+        //document.getElementById('score-display').classList.remove('slide');
+        document.getElementById('score-display').innerHTML = this.score;
     }
 
 
