@@ -23,7 +23,7 @@ export class Game {
     * @return N/A
     */
     start() {
-        const gameTimer = new Timer(5);
+        const gameTimer = new Timer(60);
         const newDeck = new Deck(8, 16);
 
         newDeck.buildBoard();
