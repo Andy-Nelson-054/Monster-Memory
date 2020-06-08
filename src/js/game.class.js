@@ -14,6 +14,7 @@ export class Game {
         this.cards = document.getElementsByClassName('card-title');
         this.matchCount = 0;
         this.score = 0;
+        this.finalScore = 0;
     }
 
     /*
@@ -162,10 +163,11 @@ export class Game {
                 for(let j = 0; j < this.flippedCards.length; j++) {
                     this.flippedCards[j].classList.add('fade-out');
                 }
+                //if all cards have been matched, call endGame()
                 this.matchCount++;
                 if (this.matchCount === newDeck.faceCount) {
                     gameTimer.stop();
-                    alert('game over');
+                    this.endGame();
                 }
             }
             scoreBoard.innerHTML = this.score;
@@ -173,22 +175,30 @@ export class Game {
     }
 
     /*
-    * @desc Close game board and reveal end-game score  view
+    * @desc Calculate bonus and penalty, close game board, and reveal end-game score  view
     * @param N/A
     * @return N/A
     */
-    static endGame() {
+    endGame() {
+        //Hacky solution, but theres about a 2 second delay from 
+            //timer to display so we're checking the display, not timeCount
+        let timeRemaining = document.getElementById('game-timer').innerHTML;
+        console.log(timeRemaining);
+        let timeBonus = Math.floor(timeRemaining / 5);
+        this.finalScore = this.score + timeBonus;
+
         document.getElementById('game-board').classList.add('closed');
         document.getElementById('game-board').classList.add('slide');
         document.getElementById('control-panel').classList.add('closed');
         document.getElementById('control-panel').classList.add('slide');
         document.getElementById('score-display').classList.remove('closed');
         //document.getElementById('score-display').classList.remove('slide');
-        document.getElementById('score-display').innerHTML = this.score;
+        document.getElementById('score').innerHTML = this.score;
+        document.getElementById('bonus').innerHTML = timeBonus;
+        document.getElementById('end-score').innerHTML = this.finalScore;
     }
-
-
     
 }
+
 
 

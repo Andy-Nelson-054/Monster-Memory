@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "babel src -d dist",
-    "start": "http-server \"C:/Users/AndrewNelson/Documents/WorkProjects/MemoryGame\""
+    "start": "http-server \"./"
   },
   "repository": {
     "type": "git",

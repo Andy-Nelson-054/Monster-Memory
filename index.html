@@ -26,11 +26,11 @@
                         <!--Start Cover Menu-->
                             <div id="cover-menu">
                                 <div id="start-menu" class="col card s3 offset-s5 menu-button">
-                                    Click to Start Game
+                                    Start Game
                                 </div>
-                                <div id="rule-menu" class="col card s3 offset-s5 menu-button">
+                                <!-- <div id="rule-menu" class="col card s3 offset-s5 menu-button">
                                     Rules
-                                </div>
+                                </div> -->
                             </div>
                         <!--End Cover Menu-->
                         
@@ -183,11 +183,6 @@
                     </div>
                     
                     <!--Start Control Panel-->
-                    <!--
-                    <div class="card-action control-panel">
-                    </div>
-                    -->
-                    <!--End Control Panel-->
                     <div id="control-panel" hidden>
                         <div id="timer-stop" class="card col offset-s2 control-panel-item" >Stop</div>
                         <div id="game-timer" class="card col offset-s2 control-panel-item">
@@ -197,15 +192,38 @@
                             <img class="timer-image" src="images/25.png" />
                         </div>  
                     </div>
+                    <!-- End Control Panel -->
                     <br>
                     <!-- Score Display -->
                     <div id="score-display" class="card card large slide closed">
+                        <h2 class="center-align red-text">Game Over</h2>
                         <div class="container">
                             <div class="row">
-                                <div id="end-score" class="card col offset-s2"></div>
+                                <div class="score-display-card card">
+                                    Score:&nbsp;
+                                    <span id="score"></span>
+                                </div>
                             </div>
+                            <div class="row">
+                                <div class="score-display-card card">
+                                    + Bonus:&nbsp;
+                                    <span id="bonus"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="end-score-card" class="score-display-card card">
+                                    Final Score:&nbsp; 
+                                    <span id="end-score"></span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div id="return-option" class="score-display-card card">
+                                    Return to Menu
+                                </div>
+                            </div>  
                         </div>
                     </div> 
+                    <!-- End Score Display -->
                 </div>
             </div>
         </div>

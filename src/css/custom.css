@@ -4,9 +4,10 @@ body {
     background-color: #37474F;
     font-family: 'Creepster';
 }
-h1 {
-    color: #FD990D;
+h2 {
+    color: orange;
 }
+
 #game-timer, #timer-stop, #game-score {
     width: 100px;
     text-align: center;
@@ -40,7 +41,11 @@ h1 {
 }
 #score-display {
     width: 550px;
-    margin-left: 30px;
+    margin: auto;
+    background-color: #FACD63;
+}
+#return-option:hover {
+    cursor: pointer;
 }
 
 .menu-button {
@@ -77,12 +82,15 @@ h1 {
 .fade-out {
     transition: height 1s;
 }
-.control-panel-item {
+.control-panel-item, .score-display-card {
     font-size: 40px;
     margin-top: -15px;
     background-color: #3DA641;
     color: black;
     display: inline-block !important;
+}
+.score-display-card {
+    padding: 10px;
 }
 .card-back {
     margin-top: 20px;

@@ -1,6 +1,6 @@
 'use strict';
 
-import { Game } from "./game.class.js";
+import { newGame } from "./main.js";
 
 export class Timer {
     constructor(timeCount) {
@@ -23,7 +23,7 @@ export class Timer {
             //Hacky solution, but theres about a 2 second delay from 
             //timer to display so we're checking the display, not timeCount
             if (document.getElementById('game-timer').textContent === '0') {
-                Game.endGame();
+                newGame.endGame();
                 this.stop();
             }
             // if(this.timeCount === 0) {
