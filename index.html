@@ -25,12 +25,12 @@
                         
                         <!--Start Cover Menu-->
                             <div id="cover-menu">
-                                <div id="start-menu" class="col card s3 offset-s5 menu-button">
+                                <div id="start-menu" class="col card s3 menu-button">
                                     Start Game
                                 </div>
-                                <!-- <div id="rule-menu" class="col card s3 offset-s5 menu-button">
-                                    Rules
-                                </div> -->
+                                <div id="about-button" class="col card s3 menu-button">
+                                    About
+                                </div>
                             </div>
                         <!--End Cover Menu-->
                         
@@ -184,8 +184,8 @@
                     
                     <!--Start Control Panel-->
                     <div id="control-panel" hidden>
-                        <div id="timer-stop" class="card col offset-s2 control-panel-item" >Stop</div>
-                        <div id="game-timer" class="card col offset-s2 control-panel-item">
+                        <!-- <div id="timer-stop" class="card col offset-s2 control-panel-item" >Stop</div> -->
+                        <div id="game-timer" class="card col offset-s4 control-panel-item">
                             <img class="timer-image" src="images/25.png" />
                         </div>  
                         <div id="game-score" class="card col offset-s2 control-panel-item">
@@ -206,7 +206,7 @@
                             </div>
                             <div class="row">
                                 <div class="score-display-card card">
-                                    + Bonus:&nbsp;
+                                    + Time Bonus:&nbsp;
                                     <span id="bonus"></span>
                                 </div>
                             </div>
@@ -224,6 +224,32 @@
                         </div>
                     </div> 
                     <!-- End Score Display -->
+                    <br>
+                    <!-- About Page -->
+                    <div id="about-page" class="card card large slide closed">
+                        <!-- <h2 class="center-align red-text">Welcome Infinity Team!</h2> -->
+                        <div class="container h2">
+                            <!-- <p class="row about-text">
+                                Test your wits and flex your brain with Monster Memory! When you start the game cards will breifly be revealed to you. Remember their location to click and match them to their partner. Beware, consecutive matches and speed are rewarded with point multipliers and bonuses. Good luck!
+                            </p> -->
+                            <h2 class="center-align red-text">Scoring</h2>
+                            <p class="row about-text">
+                                Match = 5 points<br>
+                                Multipliers :<br>
+                                2 consecutive matches = 2X<br>
+                                3 consecutive matches = 3X<br>
+                                5 consecutive matches = 5X<br>
+                                Time Bonus: 1 point per 5 seconds remaining
+                            </p>
+                            <div class="row offset-s5">
+                                <div id="return-from-about" class="score-display-card card">
+                                    Return to Menu
+                                </div>
+                            </div>  
+                        </div>
+
+                    </div>
+                    <!-- End About Page -->
                 </div>
             </div>
         </div>

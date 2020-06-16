@@ -26,7 +26,6 @@ gameTable.addEventListener('click', function () {
   if(event.target === startMenu) {
     $(gameBoard).removeClass('closed');
     $(coverMenu).attr('hidden', true);
-    $(controlPanel).attr('hidden', false);
   }
   
 

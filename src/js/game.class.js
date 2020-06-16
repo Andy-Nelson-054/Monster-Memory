@@ -11,6 +11,14 @@ export class Game {
         this.flippedCount = 0;
         this.flippedMax = 2;
         this.flippedCards = [this.flippedMax];
+        this.consecMatchCount = 0;
+        this.cardMatchScore = 5;
+        this.tierOneMultiplier = 2
+        this.tierTwoMultiplier = 3;
+        this.tierThreeMultiplier = 5;
+        this.tierOnePoint = 2;
+        this.tierTwoPoint = 3;
+        this.tierThreePoint = 5;
         this.cards = document.getElementsByClassName('card-title');
         this.matchCount = 0;
         this.score = 0;
@@ -77,7 +85,7 @@ export class Game {
                     var j = i;
                     setTimeout(() => { 
                         cardBacks[j].click(); //throws error, why?
-                        cardBacks[j].classList.add('revealed');
+                        //cardBacks[j].classList.add('revealed'); 
                     }, 50 * j);
            
                 })();
@@ -135,14 +143,17 @@ export class Game {
     */
     checkMatch(clickedCard, newDeck, gameTimer) {
         let cardsMatch = false;
-        let cardFace = clickedCard.querySelector('.card-face')
-            .getAttribute('src');
+        let roundScore = this.cardMatchScore;
+        //let cardFace = clickedCard.querySelector('.card-face')
+        //    .getAttribute('src');
         let scoreBoard = document.getElementById('game-score');
-
-        // prevent counting same card as a match
-        //clickedCard.classList.add('flipped');
-
-        this.flippedCards[this.flippedCount - 1] = clickedCard;
+        
+        //prevents too many cards in array if player clicks too quickly
+        //adds card to flipped array
+        if(!(this.flippedCount > this.flippedMax)) { 
+            this.flippedCards[this.flippedCount - 1] = clickedCard;
+        }
+        
         //if all allowable cards have been flipped        
         if(this.flippedCount === this.flippedMax) {
             for(let i = 0; i < this.flippedCards.length; i++) {
@@ -158,19 +169,34 @@ export class Game {
                 } else cardsMatch = false;
             }
             //remove matched cards from game board and increase score
-            if(cardsMatch) {
-                this.score += 5;
-                for(let j = 0; j < this.flippedCards.length; j++) {
-                    this.flippedCards[j].classList.add('fade-out');
+            if(this.flippedCount === this.flippedMax) { 
+                
+                //calculate score with multipliers for round 
+                if(cardsMatch) {
+                    this.consecMatchCount ++;
+                    if(this.consecMatchCount === this.tierOnePoint) {
+                        roundScore = this.cardMatchScore * this.tierOneMultiplier;
+                    } else if (this.consecMatchCount === this.tierTwoPoint) {
+                        roundScore = this.cardMatchScore * this.tierTwoMultiplier;
+                    } else if (this.consecMatchCount === this.tierThreeMultiplier) {
+                        roundScore = this.cardMatchScore * this.tierThreeMultiplier;
+                    }
+                    this.score += roundScore;
+                    
+                    for(let j = 0; j < this.flippedCards.length; j++) {
+                        this.flippedCards[j].classList.add('fade-out');
+                    }
+                    //if all cards have been matched, call endGame()
+                    this.matchCount++;
+                    if (this.matchCount === newDeck.faceCount) {
+                        gameTimer.stop();
+                        this.endGame();
+                    }
+                } else {
+                    this.consecMatchCount = 0;
                 }
-                //if all cards have been matched, call endGame()
-                this.matchCount++;
-                if (this.matchCount === newDeck.faceCount) {
-                    gameTimer.stop();
-                    this.endGame();
-                }
+                scoreBoard.innerHTML = this.score; 
             }
-            scoreBoard.innerHTML = this.score;
         }
     }
 
@@ -183,7 +209,6 @@ export class Game {
         //Hacky solution, but theres about a 2 second delay from 
             //timer to display so we're checking the display, not timeCount
         let timeRemaining = document.getElementById('game-timer').innerHTML;
-        console.log(timeRemaining);
         let timeBonus = Math.floor(timeRemaining / 5);
         this.finalScore = this.score + timeBonus;
 

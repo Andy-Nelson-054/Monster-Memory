@@ -27,7 +27,7 @@ h2 {
     margin-top: 10%;
     margin-left: 20%;
 }
-#inner-board {
+#inner-board, #about-page {
     background-color: #FACD63;
 }
 #game-board {
@@ -36,8 +36,12 @@ h2 {
 #cover-menu {
     margin-top: 20%;
 }
-#timer-stop {
+#timer-stop, #return-from-about {
     cursor: pointer;
+}
+#return-from-about {
+    margin-left: 30%;
+    margin-top: 50px;
 }
 #score-display {
     width: 550px;
@@ -49,7 +53,8 @@ h2 {
 }
 
 .menu-button {
-    font-size: 20px;
+    margin-left: 20% !important;
+    font-size: 35px;
     padding: 15px; 
     text-align: center;
     cursor: pointer;
@@ -131,4 +136,8 @@ h2 {
 
 .hidden {
     display: none;
+}
+
+.about-text {
+    font-size: 24px;
 }
